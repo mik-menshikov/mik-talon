@@ -170,7 +170,7 @@ formatters_dict = {
 
 # Mapping from spoken phrases to formatter names
 code_formatter_names = {
-    "all cap": "ALL_CAPS",
+    "caps lock": "ALL_CAPS",
     "all down": "ALL_LOWERCASE",
     "camel": "PRIVATE_CAMEL_CASE",
     "dotted": "DOT_SEPARATED",
