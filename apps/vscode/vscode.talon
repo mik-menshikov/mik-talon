@@ -24,6 +24,21 @@ bar source: user.vscode("workbench.view.scm")
 bar test: user.vscode("workbench.view.testing.focus")
 bar switch: user.vscode("workbench.action.toggleSidebarVisibility")
 
+bar hunt this:
+    edit.select_word()
+    text = edit.selected_text()
+    user.vscode("workbench.view.explorer")    
+    sleep(50ms)
+    user.vscode("workbench.view.search")
+    user.paste("{text}")
+
+bar hunt selection:
+    text = edit.selected_text()
+    user.vscode("workbench.view.explorer")    
+    sleep(50ms)
+    user.vscode("workbench.view.search")
+    user.paste("{text}")
+
 # Symbol search
 symbol hunt [<user.text>]:
     user.vscode("workbench.action.gotoSymbol")
