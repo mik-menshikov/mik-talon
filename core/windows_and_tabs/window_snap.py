@@ -318,3 +318,12 @@ class Actions:
             window,
             screen_number=screen_number,
         )
+
+    def resize_window(x: int, y: int):
+        """Resize the current window by a given number of pixels in x and y."""
+        current_window = ui.active_window()
+        window_rect = current_window.rect
+        new_height = window_rect.height if y == 0 else window_rect.height + y
+        new_width = window_rect.width if x == 0 else window_rect.width + x
+        _set_window_pos(current_window, window_rect.left, window_rect.top, new_width,
+                        new_height)
