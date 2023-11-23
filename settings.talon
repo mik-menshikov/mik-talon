@@ -71,5 +71,7 @@ settings():
     # -width windows are resized to stay full-height/width.
     #user.window_snap_screen = "size aware"
 
+    user.sleep_timeout_min = 3
+
 # Uncomment this to enable the curse yes/curse no commands (show hide mouse cursor). See issue #688.
 # tag(): user.mouse_cursor_commands_enable
