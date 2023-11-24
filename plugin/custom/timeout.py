@@ -7,43 +7,45 @@ mod = Module()
 
 last_phrase_time = None
 timeout_job = None
-timeout = mod.setting("sleep_timeout_min", int, default=-1).get()
+timeout = mod.setting("listening_timeout_minutes", int, default=-1).get()
 
 
 def check_timeout():
     global last_phrase_time, timeout_job, timeout
     if last_phrase_time and time.perf_counter() - last_phrase_time > timeout * 60:
         actions.speech.disable()
-        show_mode(False)
+        show_notification()
         cron.cancel(timeout_job)
+        timeout_job = None
+        last_phrase_time = None
     else:
-        timeout_job = cron.after("5s", check_timeout)
+        timeout_job = cron.after("3s", check_timeout)
 
 
 def post_phrase(e):
     global last_phrase_time, timeout_job, timeout
     if actions.speech.enabled():
+        print("phrase")
         cron.cancel(timeout_job)
-        print("timeout", f"{timeout}s")
         timeout_job = cron.after(f"{timeout * 60}s", check_timeout)
         last_phrase_time = time.perf_counter()
 
 
-def show_mode(mode):
+def show_notification():
     def on_draw(c):
         c.paint.typeface = "Arial"
         c.paint.textsize = round(min(c.width, c.height) / 5)
-        text = f"on" if mode == True else "sleeping"
+        text = "sleep mode"
         rect = c.paint.measure_text(text)[1]
         x = c.x + c.width / 2 - rect.x - rect.width / 2
         y = c.y + c.height / 2 + rect.height / 2
 
         c.paint.style = c.paint.Style.FILL
-        c.paint.color = "0000cc" if mode == True else "cc0000"
+        c.paint.color = "eeeeee"
         c.draw_text(text, x, y)
 
         c.paint.style = c.paint.Style.STROKE
-        c.paint.color = "bbbbbb"
+        c.paint.color = "000000"
         c.draw_text(text, x, y)
 
         cron.after("1s", canvas.close)
@@ -55,4 +57,5 @@ def show_mode(mode):
 
 
 if timeout > 0:
+    print("time out enabled")
     speech_system.register("post:phrase", post_phrase)
