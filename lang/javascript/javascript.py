@@ -148,7 +148,8 @@ class UserActions:
         actions.auto_insert("null")
 
     def code_operator_lambda():
-        actions.auto_insert(" => ")
+        actions.auto_insert(" () => {}")
+        actions.edit.left()
 
     def code_operator_subscript():
         actions.user.insert_between("[", "]")
