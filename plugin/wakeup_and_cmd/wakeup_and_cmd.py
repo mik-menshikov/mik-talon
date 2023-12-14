@@ -33,11 +33,11 @@ def pre_phrase(e):
     if actions.speech.enabled():
         return
 
-    if not actions.speech.enabled() and (cmd == ["wake", "up"]):
+    if cmd == ["wake", "up"]:
         cron.after("200ms", actions.speech.enable)
         return
 
-    if not actions.speech.enabled() and (e["text"][:2] == ["wake", "up"]):
+    if cmd[:2] == ["wake", "up"]:
         actions.speech.record_flac()
         cron.after("200ms", repeat_wake)
 
