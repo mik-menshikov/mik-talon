@@ -25,9 +25,9 @@ bar test: user.vscode("workbench.view.testing.focus")
 bar switch: user.vscode("workbench.action.toggleSidebarVisibility")
 bar editors: user.vscode("workbench.files.action.focusOpenEditorsView")
 
-bar (find | search) [<user.text>]$:
+bar (find | search) <user.text>:
     user.vscode("workbench.view.search")
-    sleep(100ms)
+    sleep(200ms)
     user.vscode("search.action.clearSearchResults")
     sleep(50ms)
     user.paste("{user.text}")
@@ -195,6 +195,12 @@ close other tabs: user.vscode("workbench.action.closeOtherEditors")
 close all tabs: user.vscode("workbench.action.closeAllEditors")
 close tabs way right: user.vscode("workbench.action.closeEditorsToTheRight")
 close tabs way left: user.vscode("workbench.action.closeEditorsToTheLeft")
+
+tab pin: user.vscode("workbench.action.pinEditor")
+tab unpin: user.vscode("workbench.action.unpinEditor")
+
+tab move left: user.vscode("workbench.action.moveEditorLeftInGroup")
+tab move right: user.vscode("workbench.action.moveEditorRightInGroup")
 
 # Folding
 fold that: user.vscode("editor.fold")
