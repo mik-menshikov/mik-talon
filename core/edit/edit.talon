@@ -31,7 +31,7 @@ go way right: edit.line_end()
 go way up: edit.file_start()
 go way down: edit.file_end()
 
-go top: edit.file_start()
+go to top: edit.file_start()
 go bottom: edit.file_end()
 
 go page up: edit.page_up()
@@ -184,5 +184,5 @@ nope: edit.undo()
 redo that: edit.redo()
 
 # Save
-file save: edit.save()
+(file save | save it): edit.save()
 file save all: edit.save_all()
