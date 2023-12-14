@@ -6,3 +6,5 @@ more <number_small> [times]: core.repeat_command(number_small)
 
 (repeat phrase | again) [<number_small> times]:
     core.repeat_partial_phrase(number_small or 1)
+
+key(f14): core.repeat_command(1)
