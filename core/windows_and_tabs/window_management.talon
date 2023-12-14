@@ -4,8 +4,8 @@ window last: app.window_previous()
 window close: app.window_close()
 window hide: app.window_hide()
 
-window wider: user.resize_window(100, 0)
-window slimmer: user.resize_window(-100, 0)
+window wider: user.resize_window(200, 0)
+window slimmer: user.resize_window(-200, 0)
 window taller: user.resize_window(0, 100)
 window lower: user.resize_window(0, -100)
 
