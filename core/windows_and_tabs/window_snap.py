@@ -267,7 +267,8 @@ _snap_positions = {
     "bottom right large": RelativeScreenPos(1 / 3, 0.5, 1, 1),
     "bottom center small": RelativeScreenPos(1 / 3, 0.5, 2 / 3, 1),
     # Special
-    "center": RelativeScreenPos(1 / 8, 1 / 6, 7 / 8, 5 / 6),
+    "center": RelativeScreenPos(1 / 12, 1 / 6, 11 / 12, 6),
+    # "center": RelativeScreenPos(1 / 8, 1 / 6, 7 / 8, 5 / 6),
     "full": RelativeScreenPos(0, 0, 1, 1),
     "fullscreen": RelativeScreenPos(0, 0, 1, 1),
 }
