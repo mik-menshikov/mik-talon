@@ -24,7 +24,7 @@ def get_last_voice_file():
 def repeat_wake():
     path = get_last_voice_file()
     actions.speech.enable()
-    actions.sleep("500ms")
+    actions.sleep("200ms")
     actions.speech.replay(path)
 
 
