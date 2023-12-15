@@ -16,7 +16,7 @@ inside (squares | square brackets | list): user.insert_between("[", "]")
 inside (bracket | braces): user.insert_between("{", "}")
 inside percent: user.insert_between("%", "%")
 inside (quotes | string): user.insert_between("'", "'")
-inside (double quotes | dub quotes): user.insert_between('"', '"')
+inside (double quotes | dub quotes | doubles): user.insert_between('"', '"')
 inside (graves | back ticks): user.insert_between("`", "`")
 angle that:
     text = edit.selected_text()
@@ -36,7 +36,7 @@ percent that:
 quote that:
     text = edit.selected_text()
     user.paste("'{text}'")
-(double quote | dub quote) that:
+(double quote | dub quote | double) that:
     text = edit.selected_text()
     user.paste('"{text}"')
 (grave | back tick) that:

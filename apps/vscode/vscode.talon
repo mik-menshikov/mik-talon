@@ -2,7 +2,7 @@
 app: vscode
 -
 tag(): user.find_and_replace
-tag(): user.line_commands
+
 tag(): user.multiple_cursors
 tag(): user.splits
 tag(): user.tabs
@@ -23,6 +23,59 @@ bar search: user.vscode("workbench.view.search")
 bar source: user.vscode("workbench.view.scm")
 bar test: user.vscode("workbench.view.testing.focus")
 bar switch: user.vscode("workbench.action.toggleSidebarVisibility")
+bar editors: user.vscode("workbench.files.action.focusOpenEditorsView")
+
+bar (find | search) <user.text>:
+    user.vscode("workbench.view.search")
+    sleep(200ms)
+    user.vscode("search.action.clearSearchResults")
+    sleep(50ms)
+    user.paste("{user.text}")
+
+bar (find | search) it:
+    edit.select_word()
+    text = edit.selected_text()
+    sleep(50ms)
+    user.vscode("workbench.view.search")
+    sleep(100ms)
+    user.vscode("search.action.clearSearchResults")
+    sleep(50ms)
+    user.paste("{text}")
+
+bar (find | search) selection:
+    text = edit.selected_text()
+    user.vscode("workbench.view.search")
+    sleep(100ms)
+    user.vscode("search.action.clearSearchResults")
+    user.paste("{text}")
+
+bar next:
+    user.vscode("workbench.view.explorer")
+    sleep(100ms)
+    key("down")
+    sleep(100ms)
+    key("space")
+    sleep(100ms)
+    user.vscode("workbench.action.focusActiveEditorGroup")    
+    
+bar previous:
+    user.vscode("workbench.view.explorer")
+    sleep(100ms)
+    key("up")
+    sleep(100ms)
+    key("space")
+    sleep(100ms)
+    user.vscode("workbench.action.focusActiveEditorGroup")
+
+bar search focus results: user.vscode("search.action.focusSearchList")
+bar search new: user.vscode("search.action.clearSearchResults")
+bar search view tree: user.vscode("search.action.viewAsTree")
+bar search view list: user.vscode("search.action.viewAsList")
+hunt next: key("f4")
+hunt last: key("shift-f4")
+hunt global: user.vscode("search.action.openNewEditor")
+hunt aside: user.vscode("search.action.openNewEditorToSide")
+
 
 # Symbol search
 symbol hunt [<user.text>]:
@@ -142,6 +195,12 @@ close other tabs: user.vscode("workbench.action.closeOtherEditors")
 close all tabs: user.vscode("workbench.action.closeAllEditors")
 close tabs way right: user.vscode("workbench.action.closeEditorsToTheRight")
 close tabs way left: user.vscode("workbench.action.closeEditorsToTheLeft")
+
+tab pin: user.vscode("workbench.action.pinEditor")
+tab unpin: user.vscode("workbench.action.unpinEditor")
+
+tab move left: user.vscode("workbench.action.moveEditorLeftInGroup")
+tab move right: user.vscode("workbench.action.moveEditorRightInGroup")
 
 # Folding
 fold that: user.vscode("editor.fold")

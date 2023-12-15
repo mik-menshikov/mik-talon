@@ -1,4 +1,6 @@
 settings():
+    speech.timeout = 0.4
+    
     # Adjust the scale of the imgui to my liking
     imgui.scale = 1.3
 
@@ -68,6 +70,9 @@ settings():
     # 'size aware' keeps absolute window size the same, except full-height or
     # -width windows are resized to stay full-height/width.
     #user.window_snap_screen = "size aware"
+
+    # Puts Talon into sleep mode if no commands are spoken for a defined period of time.
+    user.listening_timeout_minutes = 1
 
 # Uncomment this to enable the curse yes/curse no commands (show hide mouse cursor). See issue #688.
 # tag(): user.mouse_cursor_commands_enable

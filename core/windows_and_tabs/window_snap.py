@@ -267,7 +267,8 @@ _snap_positions = {
     "bottom right large": RelativeScreenPos(1 / 3, 0.5, 1, 1),
     "bottom center small": RelativeScreenPos(1 / 3, 0.5, 2 / 3, 1),
     # Special
-    "center": RelativeScreenPos(1 / 8, 1 / 6, 7 / 8, 5 / 6),
+    "center": RelativeScreenPos(1 / 12, 1 / 6, 11 / 12, 6),
+    # "center": RelativeScreenPos(1 / 8, 1 / 6, 7 / 8, 5 / 6),
     "full": RelativeScreenPos(0, 0, 1, 1),
     "fullscreen": RelativeScreenPos(0, 0, 1, 1),
 }
@@ -318,3 +319,12 @@ class Actions:
             window,
             screen_number=screen_number,
         )
+
+    def resize_window(x: int, y: int):
+        """Resize the current window by a given number of pixels in x and y."""
+        current_window = ui.active_window()
+        window_rect = current_window.rect
+        new_height = window_rect.height if y == 0 else window_rect.height + y
+        new_width = window_rect.width if x == 0 else window_rect.width + x
+        _set_window_pos(current_window, window_rect.left, window_rect.top, new_width,
+                        new_height)
